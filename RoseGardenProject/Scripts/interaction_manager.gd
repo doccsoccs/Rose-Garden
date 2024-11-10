@@ -12,3 +12,14 @@ func unregister_area(area: InteractionArea):
 	var index = active_areas.find(area)
 	if index != -1:
 		active_areas.remove_at(index)
+
+func _process(_delta):
+	if active_areas.size() > 0:
+		can_interact = true
+	else:
+		can_interact = false
+
+func get_interaction():
+	if can_interact:
+		active_areas.sort()
+		active_areas[0].interact.call()

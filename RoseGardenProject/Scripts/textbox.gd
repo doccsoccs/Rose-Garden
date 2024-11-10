@@ -2,7 +2,6 @@ extends CanvasLayer
 
 var active: bool = false
 
-var filename: String
 var file
 var json_as_text
 var json_as_dict
@@ -56,13 +55,13 @@ func _input(event):
 		else:
 			finish_reading()
 
-func init_dialogue():
+func init_dialog(file_address: String = "res://Text/DialogueJSON/test.json"):
 	active = true
 	get_tree().paused = true
 	$".".visible = true
 	
 	# Read in text from JSON file
-	file = "res://Text/DialogueJSON/{0}.json".format({0:filename})
+	file = file_address
 	json_as_text = FileAccess.get_file_as_string(file)
 	json_as_dict = JSON.parse_string(json_as_text)
 	dialogue = json_as_dict # contains an array of individual lines

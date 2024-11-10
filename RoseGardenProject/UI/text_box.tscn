@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/textbox.gd" id="1_44j0k"]
 [ext_resource type="FontFile" uid="uid://clm7yl6qyg3jb" path="res://Text/dogicapixel.ttf" id="2_byt6a"]
 
-[node name="TextBox" type="CanvasLayer"]
+[node name="TextBoxCanvas" type="CanvasLayer" groups=["TEXTBOX"]]
 process_mode = 3
 visible = false
 script = ExtResource("1_44j0k")

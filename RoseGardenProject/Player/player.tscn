@@ -24,8 +24,13 @@ texture = ExtResource("2_v00wd")
 shape = SubResource("RectangleShape2D_ke678")
 
 [node name="InteractionDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
 [node name="InteractionCollisionComponent" type="CollisionShape2D" parent="InteractionDetector"]
 position = Vector2(42, 0)
 shape = SubResource("RectangleShape2D_0jdrp")
 debug_color = Color(0.898039, 0.215686, 0.0705882, 0.419608)
+
+[connection signal="area_entered" from="InteractionDetector" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="InteractionDetector" to="." method="_on_area_exited"]
