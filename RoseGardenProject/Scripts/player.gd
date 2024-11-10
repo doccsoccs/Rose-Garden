@@ -2,17 +2,27 @@ extends CharacterBody2D
 class_name Player
 
 # Movement
-@export var speed = 600.0
+@export var speed = 400.0
 var direction: Vector2 = Vector2.ZERO
 var moving_left: bool = false
 var moving_right: bool = false
 var moving_up: bool = false
 var moving_down: bool = false
 
-# Interaction Detection
+# Collisions
+@onready var collision_component = $CollisionComponent
 @onready var idetector = $InteractionDetector
 
-func _input(_event):
+func _ready():
+	direction = Vector2(0,1)
+
+func _input(event):
+	# Interact
+	if event.is_action_pressed("Interact"):
+		interact()
+
+func _physics_process(delta):
+#region Movement Inputs
 	if Input.is_action_just_pressed("MoveLeft"):
 		moving_left = true
 		moving_right = false
@@ -42,8 +52,7 @@ func _input(_event):
 		moving_down = false
 		if Input.is_action_pressed("MoveUp"):
 			moving_up = true
-
-func _physics_process(delta):
+	
 	if Input.is_action_pressed("MoveLeft") and moving_left:
 		direction += Vector2(-1,0)
 	if Input.is_action_pressed("MoveRight") and moving_right:
@@ -52,14 +61,23 @@ func _physics_process(delta):
 		direction += Vector2(0,-1)
 	if Input.is_action_pressed("MoveDown") and moving_down:
 		direction += Vector2(0,1)
+#endregion
 	
+	# Move if direction is non-ZERO
 	velocity = direction.normalized() * speed * delta
 	position += velocity
 	
-	# Rotate Interaction Detectord
-	idetector.rotation = direction.angle()
+	# Rotate Interaction Detector & Hitbox
+	if velocity != Vector2.ZERO:
+		collision_component.rotation = direction.angle()
+		idetector.rotation = direction.angle()
 	
+	# Reset direction and velocity
 	direction = Vector2.ZERO
 	velocity = Vector2.ZERO
 	
 	move_and_slide()
+
+# The player attempts to interact with an interactable object or NPC
+func interact():
+	pass

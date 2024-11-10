@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://u07hltu3feg0"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pv6xd"]
-[ext_resource type="Texture2D" uid="uid://ckxm0k5f4m8no" path="res://Sprites/Test Assets/testcircle.png" id="2_sseqs"]
+[ext_resource type="Texture2D" uid="uid://lde7fjbcimwr" path="res://Sprites/Test Assets/testsquare.png" id="2_v00wd"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bup4a"]
-radius = 32.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke678"]
+size = Vector2(64, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4txbq"]
-size = Vector2(9, 61)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jdrp"]
+size = Vector2(20, 49.79)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["PLAYER"]]
 motion_mode = 1
 script = ExtResource("1_pv6xd")
 
@@ -18,14 +18,14 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="SpriteComponent" type="Sprite2D" parent="."]
-texture = ExtResource("2_sseqs")
+texture = ExtResource("2_v00wd")
 
 [node name="CollisionComponent" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_bup4a")
+shape = SubResource("RectangleShape2D_ke678")
 
 [node name="InteractionDetector" type="Area2D" parent="."]
 
 [node name="InteractionCollisionComponent" type="CollisionShape2D" parent="InteractionDetector"]
-position = Vector2(31, 0)
-shape = SubResource("RectangleShape2D_4txbq")
+position = Vector2(42, 0)
+shape = SubResource("RectangleShape2D_0jdrp")
 debug_color = Color(0.898039, 0.215686, 0.0705882, 0.419608)

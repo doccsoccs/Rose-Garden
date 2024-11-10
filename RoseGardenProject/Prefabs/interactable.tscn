@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2hfihbepk77o"]
+
+[ext_resource type="Texture2D" uid="uid://lde7fjbcimwr" path="res://Sprites/Test Assets/testsquare.png" id="1_n8o63"]
+[ext_resource type="PackedScene" uid="uid://diqvnwjep8xbl" path="res://Prefabs/interaction_area.tscn" id="3_0da2o"]
+[ext_resource type="Script" path="res://Scripts/interaction_area.gd" id="4_nm2k0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ko3js"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8swef"]
+size = Vector2(64, 64)
+
+[node name="Interactable" type="StaticBody2D"]
+collision_layer = 9
+collision_mask = 0
+
+[node name="SpriteComponent" type="Sprite2D" parent="."]
+texture = ExtResource("1_n8o63")
+
+[node name="CollisionComponent" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ko3js")
+debug_color = Color(0.772549, 0.839216, 0, 0.419608)
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_0da2o")]
+script = ExtResource("4_nm2k0")
+
+[node name="InteractCollision" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_8swef")
+debug_color = Color(0.905882, 0.231373, 0.501961, 0.419608)

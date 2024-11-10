@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqhuscujk6a0h"]
+
+[ext_resource type="Texture2D" uid="uid://bxsp68wqjdg" path="res://Sprites/UI_Sprites/textbox.png" id="1_5ux7d"]
+[ext_resource type="Script" path="res://Scripts/textbox.gd" id="1_44j0k"]
+[ext_resource type="FontFile" uid="uid://clm7yl6qyg3jb" path="res://Text/dogicapixel.ttf" id="2_byt6a"]
+
+[node name="TextBox" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_44j0k")
+
+[node name="Textbox" type="Sprite2D" parent="."]
+position = Vector2(960, 890.195)
+scale = Vector2(6, 6)
+texture = ExtResource("1_5ux7d")
+
+[node name="Control" type="Control" parent="Textbox"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -30.0
+offset_right = -160.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="InteractText" type="RichTextLabel" parent="Textbox/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.133333
+anchor_right = 0.975
+anchor_bottom = 0.866667
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_byt6a")
+theme_override_font_sizes/normal_font_size = 8
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterText" type="RichTextLabel" parent="Textbox/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028125
+anchor_top = 0.333333
+anchor_right = 0.971875
+anchor_bottom = 0.866667
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_byt6a")
+theme_override_font_sizes/normal_font_size = 8
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="NameLabel" type="RichTextLabel" parent="Textbox/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0385417
+anchor_top = 0.157792
+anchor_right = 0.982292
+anchor_bottom = 0.307792
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_byt6a")
+theme_override_font_sizes/normal_font_size = 8
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+metadata/_edit_use_anchors_ = true

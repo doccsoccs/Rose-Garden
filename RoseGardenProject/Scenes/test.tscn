@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://vsn0ufyngbs1"]
+[gd_scene load_steps=5 format=3 uid="uid://vsn0ufyngbs1"]
 
+[ext_resource type="PackedScene" uid="uid://dqhuscujk6a0h" path="res://UI/text_box.tscn" id="1_6jlox"]
 [ext_resource type="PackedScene" uid="uid://u07hltu3feg0" path="res://Player/player.tscn" id="1_m114s"]
-[ext_resource type="Texture2D" uid="uid://lde7fjbcimwr" path="res://Sprites/Test Assets/testsquare.png" id="2_cdou1"]
-[ext_resource type="PackedScene" uid="uid://c2hfihbepk77o" path="res://interactable.tscn" id="3_d61ty"]
+[ext_resource type="PackedScene" uid="uid://c2hfihbepk77o" path="res://Prefabs/interactable.tscn" id="3_d61ty"]
+[ext_resource type="Script" path="res://Scripts/interaction_manager.gd" id="4_lgyou"]
 
 [node name="Test" type="Node2D"]
+
+[node name="TextBox" parent="." instance=ExtResource("1_6jlox")]
+
+[node name="Interactable" parent="." instance=ExtResource("3_d61ty")]
+position = Vector2(-237, -81)
 
 [node name="Player" parent="." instance=ExtResource("1_m114s")]
 
@@ -13,17 +19,5 @@
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-427, -379, -366, -166, -187, -225, 183, -126, 389, -285, 283, -488, -242, -485)
 
-[node name="Testsquare" type="Sprite2D" parent="."]
-position = Vector2(-549, -17)
-texture = ExtResource("2_cdou1")
-
-[node name="Testsquare2" type="Sprite2D" parent="."]
-position = Vector2(222, 364)
-texture = ExtResource("2_cdou1")
-
-[node name="Testsquare3" type="Sprite2D" parent="."]
-position = Vector2(427, -139)
-texture = ExtResource("2_cdou1")
-
-[node name="Interactable" parent="." instance=ExtResource("3_d61ty")]
-position = Vector2(-237, -81)
+[node name="InteractionManager" type="Node2D" parent="."]
+script = ExtResource("4_lgyou")
