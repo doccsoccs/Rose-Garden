@@ -65,21 +65,24 @@ func _physics_process(delta):
 	if Input.is_action_pressed("MoveDown") and moving_down:
 		direction += Vector2(0,1)
 #endregion
-	
-	# Move if direction is non-ZERO
-	velocity = direction.normalized() * speed * delta
-	position += velocity
-	
-	# Rotate Interaction Detector & Hitbox
-	if velocity != Vector2.ZERO:
-		collision_component.rotation = direction.angle()
-		idetector.rotation = direction.angle()
+	if !DialogueManager.in_dialog:
+		# Move if direction is non-ZERO
+		velocity = direction.normalized() * speed * delta
+		position += velocity
+		
+		# Rotate Interaction Detector
+		if velocity != Vector2.ZERO:
+			idetector.rotation = direction.angle()
 	
 	# Reset direction and velocity
 	direction = Vector2.ZERO
 	velocity = Vector2.ZERO
 	
-	move_and_slide()
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		# Don't slide when moving into interactables
+		if collision.get_collider() is Interactable:
+			pass
 
 # The player attempts to interact with an interactable object or NPC
 func interact():

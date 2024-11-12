@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwlrilenmdyvt"]
+
+[ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_6ronj"]
+[ext_resource type="PackedScene" uid="uid://vsn0ufyngbs1" path="res://Scenes/test.tscn" id="2_cb05k"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_6ronj")
+
+[node name="Main2D" type="Node2D" parent="." groups=["MAIN2D"]]
+
+[node name="Test" parent="Main2D" instance=ExtResource("2_cb05k")]

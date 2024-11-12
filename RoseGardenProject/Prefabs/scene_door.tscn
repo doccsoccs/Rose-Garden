@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5fg6xn1byr5u"]
+
+[ext_resource type="Script" path="res://Scripts/scene_door.gd" id="1_gh5ks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_raki1"]
+size = Vector2(32, 64)
+
+[node name="SceneDoor" type="Area2D"]
+script = ExtResource("1_gh5ks")
+
+[node name="CollisionComponent" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_raki1")
+debug_color = Color(0.937255, 0, 0.627451, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

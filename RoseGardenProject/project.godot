@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="RoseGarden"
-run/main_scene="res://Scenes/test.tscn"
+run/main_scene="res://Scenes/main_scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
+MainScene="*res://Scripts/main_scene.gd"
 DialogueManager="*res://Scripts/AutoLoads/dialogue_manager.gd"
 InteractionManager="*res://Scripts/AutoLoads/interaction_manager.gd"
 
@@ -76,3 +77,4 @@ Cancel={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

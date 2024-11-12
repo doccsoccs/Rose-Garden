@@ -1,21 +1,21 @@
 [gd_scene load_steps=6 format=3 uid="uid://buf8vihmtamn8"]
 
 [ext_resource type="Script" path="res://Scripts/base_interactable.gd" id="1_bkjc6"]
-[ext_resource type="Texture2D" uid="uid://lde7fjbcimwr" path="res://Sprites/Test Assets/testsquare.png" id="1_gvdfa"]
+[ext_resource type="Texture2D" uid="uid://b8gnkd4duhttc" path="res://Sprites/Test Assets/testsquare32.png" id="2_gft8u"]
 [ext_resource type="PackedScene" uid="uid://diqvnwjep8xbl" path="res://Prefabs/interaction_area.tscn" id="2_xb887"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ko3js"]
-size = Vector2(64, 64)
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8swef"]
-size = Vector2(64, 64)
+size = Vector2(32, 32)
 
 [node name="Interactable" type="StaticBody2D"]
 script = ExtResource("1_bkjc6")
 file_address = "res://Text/DialogueJSON/test.json"
 
 [node name="SpriteComponent" type="Sprite2D" parent="."]
-texture = ExtResource("1_gvdfa")
+texture = ExtResource("2_gft8u")
 
 [node name="CollisionComponent" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ko3js")

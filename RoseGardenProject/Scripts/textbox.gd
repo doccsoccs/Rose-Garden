@@ -63,6 +63,7 @@ func _input(event):
 
 # Initiates dialog from a JSON to be displayed
 func init_dialog(file_address: String = "res://Text/DialogueJSON/test.json"):
+	DialogueManager.in_dialog = true
 	#get_tree().paused = true
 	canvas.visible = true
 	
@@ -108,6 +109,7 @@ func end_dialogue():
 	clear_all_text()
 	#get_tree().paused = false
 	InteractionManager.can_interact = true
+	DialogueManager.in_dialog = false
 
 # Automatically finishes displaying the text in a given line
 func finish_reading():

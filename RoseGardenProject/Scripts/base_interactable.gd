@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name Interactable
 
 @onready var interaction_area = $InteractionArea
 @export var file_address: String
