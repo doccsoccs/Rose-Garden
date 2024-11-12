@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var active: bool = false
+@onready var canvas = $"."
 
 var file
 var json_as_text
@@ -47,18 +48,23 @@ func _process(delta):
 		else:
 			reading = false
 			char_read_timer = 0
+		
+		# Moved here to prevent the interact input from becoming a progress dialog input
+		active = true
 
 func _input(event):
 	if event.is_action_pressed("Interact") and active:
 		if !reading:
 			next_line()
-		else:
+		else: 
 			finish_reading()
+	elif Input.is_action_pressed("Cancel") and active:
+		finish_reading()
 
+# Initiates dialog from a JSON to be displayed
 func init_dialog(file_address: String = "res://Text/DialogueJSON/test.json"):
-	active = true
-	get_tree().paused = true
-	$".".visible = true
+	#get_tree().paused = true
+	canvas.visible = true
 	
 	# Read in text from JSON file
 	file = file_address
@@ -72,6 +78,7 @@ func init_dialog(file_address: String = "res://Text/DialogueJSON/test.json"):
 	
 	next_line()
 
+# Displays the next line of JSON dialog 
 func next_line():
 	if !reading: # only advance to next line if the line has finished displaying
 		clear_all_text()
@@ -94,11 +101,13 @@ func next_line():
 		reading = true
 		count = 0
 
+# Ends a given instance of textbox dialog
 func end_dialogue():
 	active = false
-	$".".visible = false
+	canvas.visible = false
 	clear_all_text()
-	get_tree().paused = false
+	#get_tree().paused = false
+	InteractionManager.can_interact = true
 
 # Automatically finishes displaying the text in a given line
 func finish_reading():

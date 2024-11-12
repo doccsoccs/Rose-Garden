@@ -13,13 +13,11 @@ func unregister_area(area: InteractionArea):
 	if index != -1:
 		active_areas.remove_at(index)
 
-func _process(_delta):
-	if active_areas.size() > 0:
-		can_interact = true
-	else:
-		can_interact = false
-
 func get_interaction():
-	if can_interact:
-		active_areas.sort()
+	if active_areas.size() > 0:
+		can_interact = false
+		active_areas.sort_custom(sort_by_distance)
 		active_areas[0].interact.call()
+
+func sort_by_distance(a, b):
+	return a.get_parent().position.distance_to(player.position) < b.get_parent().position.distance_to(player.position)

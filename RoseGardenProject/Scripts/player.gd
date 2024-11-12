@@ -13,7 +13,7 @@ var moving_down: bool = false
 @onready var collision_component = $CollisionComponent
 
 # Interactions
-@onready var interaction_manager = $"../InteractionManager"
+@onready var interaction_manager = InteractionManager
 @onready var idetector = $InteractionDetector
 
 func _ready():
@@ -83,7 +83,8 @@ func _physics_process(delta):
 
 # The player attempts to interact with an interactable object or NPC
 func interact():
-	interaction_manager.get_interaction()
+	if interaction_manager.can_interact:
+		interaction_manager.get_interaction()
 
 # Interaction Signals
 func _on_area_entered(area):

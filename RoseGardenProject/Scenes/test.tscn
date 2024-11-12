@@ -1,18 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://vsn0ufyngbs1"]
+[gd_scene load_steps=4 format=3 uid="uid://vsn0ufyngbs1"]
 
 [ext_resource type="PackedScene" uid="uid://dqhuscujk6a0h" path="res://UI/text_box.tscn" id="1_6jlox"]
 [ext_resource type="PackedScene" uid="uid://u07hltu3feg0" path="res://Player/player.tscn" id="1_m114s"]
 [ext_resource type="PackedScene" uid="uid://buf8vihmtamn8" path="res://Prefabs/test_interactable.tscn" id="3_tidfw"]
-[ext_resource type="Script" path="res://Scripts/interaction_manager.gd" id="4_lgyou"]
 
 [node name="Test" type="Node2D"]
 
 [node name="DialogueManager" parent="." instance=ExtResource("1_6jlox")]
 
-[node name="InteractionManager" type="Node2D" parent="."]
-script = ExtResource("4_lgyou")
-
-[node name="TestInteractable" parent="InteractionManager" instance=ExtResource("3_tidfw")]
+[node name="Interactable" parent="." instance=ExtResource("3_tidfw")]
 
 [node name="Player" parent="." instance=ExtResource("1_m114s")]
 position = Vector2(-172, 86)
