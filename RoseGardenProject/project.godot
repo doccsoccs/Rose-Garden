@@ -17,9 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MainScene="*res://Scripts/main_scene.gd"
+MainScene="*res://Scripts/AutoLoads/main_scene.gd"
 DialogueManager="*res://Scripts/AutoLoads/dialogue_manager.gd"
 InteractionManager="*res://Scripts/AutoLoads/interaction_manager.gd"
+MoveBetweenScenes="*res://Scripts/AutoLoads/move_between_scenes.gd"
+TimeManager="*res://Scripts/AutoLoads/time_manager.gd"
 
 [display]
 

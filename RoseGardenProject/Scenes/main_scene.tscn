@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwlrilenmdyvt"]
+[gd_scene load_steps=5 format=3 uid="uid://cwlrilenmdyvt"]
 
-[ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_6ronj"]
+[ext_resource type="Script" path="res://Scripts/AutoLoads/main_scene.gd" id="1_6ronj"]
 [ext_resource type="PackedScene" uid="uid://vsn0ufyngbs1" path="res://Scenes/test.tscn" id="2_cb05k"]
+[ext_resource type="Script" path="res://Scripts/AutoLoads/time_manager.gd" id="3_puton"]
+[ext_resource type="FontFile" uid="uid://clm7yl6qyg3jb" path="res://Text/dogicapixel.ttf" id="4_5ve2d"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_6ronj")
@@ -9,3 +11,39 @@ script = ExtResource("1_6ronj")
 [node name="Main2D" type="Node2D" parent="." groups=["MAIN2D"]]
 
 [node name="Test" parent="Main2D" instance=ExtResource("2_cb05k")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimeManager" type="Timer" parent="CanvasLayer" groups=["TIMEMNGR"]]
+wait_time = 100.0
+autostart = true
+script = ExtResource("3_puton")
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeLabel" type="RichTextLabel" parent="CanvasLayer/Control" groups=["TIMELABEL"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 20
+theme_override_fonts/normal_font = ExtResource("4_5ve2d")
+theme_override_font_sizes/normal_font_size = 48
+text = "DAY - 0
+CYCLE - 0"
+scroll_active = false
+meta_underlined = false
+hint_underlined = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[connection signal="timeout" from="CanvasLayer/TimeManager" to="CanvasLayer/TimeManager" method="_on_timeout"]
