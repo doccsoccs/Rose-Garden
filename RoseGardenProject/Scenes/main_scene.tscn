@@ -12,14 +12,14 @@ script = ExtResource("1_6ronj")
 
 [node name="Test" parent="Main2D" instance=ExtResource("2_cb05k")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="TimeCanvas" type="CanvasLayer" parent="."]
 
-[node name="TimeManager" type="Timer" parent="CanvasLayer" groups=["TIMEMNGR"]]
+[node name="TimeManager" type="Timer" parent="TimeCanvas" groups=["TIMEMNGR"]]
 wait_time = 100.0
 autostart = true
 script = ExtResource("3_puton")
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="TimeCanvas"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TimeLabel" type="RichTextLabel" parent="CanvasLayer/Control" groups=["TIMELABEL"]]
+[node name="TimeLabel" type="RichTextLabel" parent="TimeCanvas/Control" groups=["TIMELABEL"]]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,4 +46,35 @@ hint_underlined = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[connection signal="timeout" from="CanvasLayer/TimeManager" to="CanvasLayer/TimeManager" method="_on_timeout"]
+[node name="WaitMenu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="WaitMenu"]
+layout_mode = 3
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WaitMenu/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -25.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="WaitMenu/Control/VBoxContainer"]
+layout_mode = 2
+text = "WAIT"
+
+[node name="HSlider" type="HSlider" parent="WaitMenu/Control/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="timeout" from="TimeCanvas/TimeManager" to="TimeCanvas/TimeManager" method="_on_timeout"]
